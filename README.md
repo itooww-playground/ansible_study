@@ -10,6 +10,36 @@ hostsファイルを追加する。
 
 `.ssh/config`をちゃんと書けばuserとprivate-keyの設定オプション指定しなくていいらしい。
 
+### 実行する時のオプションを減らす
+`ansible hostname -a 'w'` みたいな感じになる。
+
+`hosts`ファイルに接続先サーバー情報を書く
+
+```
+[hostname]
+xxx.xxx.xxx.xxx
+```
+
+`ansible.cfg`にssh接続オプションなどを設定する
+
+```
+[defaults]
+hostfile = ./hosts
+remote_user = root
+
+[ssh_connction]
+ssh_args = -F ssh_config
+
+```
+
+- ansible.cfg リファレンス http://docs.ansible.com/ansible/intro_configuration.html
+
+```
+$ ansible default -a 'uptime'
+xxx.xxx.xxx.xxx | SUCCESS | rc=0 >>
+ 23:30:00 up 18 days,  7:05,  1 user,  load average: 0.00, 0.00, 0.00
+```
+
 ## 役割解説
 http://yteraoka.github.io/ansible-tutorial/ より役割について
 
