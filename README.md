@@ -4,6 +4,8 @@ ansibleお勉強用
 目的 ： [ansibleのbest practice](http://docs.ansible.com/ansible/playbooks_best_practices.html) に従って構築やメンテが出来るようにする
 
 ## 実行方法
+hostsファイルを追加する。
+
 `ansible -i hosts all -a 'uname' --user=hoge --private-key=~/.ssh/id_rsa -vvvv`
 
 `.ssh/config`をちゃんと書けばuserとprivate-keyの設定オプション指定しなくていいらしい。
